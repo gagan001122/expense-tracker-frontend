@@ -1,5 +1,4 @@
 import { useState } from "react";
-import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useGlobalContext } from "../../context/globalContext";
 import Button from "../button/Button";
@@ -13,7 +12,7 @@ function ExpenseForm() {
     category: "",
   });
 
-  const { title, amount, date, category } = inputState;
+  const { title, amount, category } = inputState;
 
   const handleInput = (name) => (e) => {
     setInputState({ ...inputState, [name]: e.target.value });
@@ -41,7 +40,7 @@ function ExpenseForm() {
           name={"title"}
           placeholder="Expense Title"
           onChange={handleInput("title")}
-          className="border-2 border-white rounded-md p-2"
+          className="border-2 border-slate-400 rounded-md p-2 placeholder:text-slate-800"
         />
       </div>
       <div className="input-control">
@@ -51,19 +50,7 @@ function ExpenseForm() {
           name={"amount"}
           placeholder={"Expense Amount"}
           onChange={handleInput("amount")}
-          className="border-2 border-white rounded-md p-2"
-        />
-      </div>
-      <div className="input-control">
-        <DatePicker
-          id="date"
-          placeholderText="Enter A Date"
-          selected={date}
-          dateFormat="dd/MM/yyyy"
-          onChange={(date) => {
-            setInputState({ ...inputState, date: date });
-          }}
-          className="border-2 border-white rounded-md p-2"
+          className="border-2 border-slate-400  rounded-md p-2 placeholder:text-slate-800"
         />
       </div>
       <div className="selects input-control">
@@ -73,7 +60,7 @@ function ExpenseForm() {
           name="category"
           id="category"
           onChange={handleInput("category")}
-          className="text-gray-400 focus:text-gray-900"
+          className="text-gray-400 border-slate-400 border-2 focus:text-gray-900 placeholder:text-slate-800"
         >
           <option value="" disabled>
             Select Option

@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { useGlobalContext } from "../../context/globalContext";
 import Form from "../Form/Form";
 import IncomeItem from "./IncomeItem";
-
 function Income() {
   const { incomes, getIncomes, deleteIncome, totalIncome } = useGlobalContext();
 
@@ -11,8 +10,8 @@ function Income() {
   }, []);
 
   return (
-    <div className="flex overflow-auto">
-      <div className="w-full bg-white border-2 border-solid border-white shadow-md rounded-2xl p-4 mb-4">
+    <div className="flex overflow-auto h-full">
+      <div className="w-full bg-white border-2 border-solid border-white shadow-md rounded-2xl p-8 ">
         <h1 className="text-3xl font-semibold mb-4">Incomes</h1>
         <h2 className="total-income text-2xl font-semibol flex justify-center items-center bg-[#FCF6F9] border-2 border-white box-border border-solid shadow-md rounded-2xl p-4 mb-4">
           Total Income:{" "}

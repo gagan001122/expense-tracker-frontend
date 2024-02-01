@@ -71,8 +71,8 @@ function IncomeItem({
     }
   };
   return (
-    <div className="flex gap-8">
-      <div className="history-item bg-FCF6F9 border-2 border-white shadow-md p-4 rounded-2xl flex justify-between items-center">
+    <div className="flex gap-8 w-[70%]">
+      <div className="history-item bg-FCF6F9 border-2 border-black w-full shadow-md p-4 rounded-2xl flex justify-between items-center">
         <div className="flex flex-col gap-4">
           <div className="flex items-center gap-2">
             {type === "expense" ? expenseCatIcon() : categoryIcon()}

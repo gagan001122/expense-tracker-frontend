@@ -8,16 +8,20 @@ function GroupList() {
   const handleDeleteGroup = (groupId) => {
     deleteGroup(groupId);
   };
-
+  // const demoGroups = [
+  //   { id: "1", groupName: "Demo Group 1" },
+  //   { id: "2", groupName: "Demo Group 2" },
+  //   { id: "3", groupName: "Demo Group 3" },
+  // ];
   return (
     <div className="flex flex-col gap-4">
-      <h1 className="text-2xl font-bold">Recent Groups</h1>
-      {groups?.length > 0 ? (
-        <ul className="list-none p-0">
+      <div className="flex-1 text">
+        <div className="flex flex-col w-full gap-4 bg-FCF6F9 border-2 border-FFFFFF shadow-md p-4 rounded-2xl overflow-y-auto h-[29.5rem] no-scrollbar">
+          <h2 className="text-2xl font-bold mb-4 p-4">Groups</h2>
           {groups.map((group) => (
             <li
               key={group.id}
-              className="bg-[#FCF6F9] border-2 border-white box-border border-solid shadow-md rounded-10 p-4 mb-4 flex justify-between items-center"
+              className="history-item bg-FCF6F9 border-2 border-black w-full shadow-md p-4 rounded-2xl flex justify-between items-center"
             >
               {group.groupName}
               <div className="btn-con">
@@ -34,10 +38,8 @@ function GroupList() {
               </div>
             </li>
           ))}
-        </ul>
-      ) : (
-        <p className="text-xl">No groups created yet.</p>
-      )}
+        </div>
+      </div>
     </div>
   );
 }

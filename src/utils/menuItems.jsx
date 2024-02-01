@@ -27,4 +27,10 @@ export const menuItems = [
     icon: <FaPeopleCarry size={"2rem"} />,
     link: "/dashboard",
   },
+  {
+    id: 5,
+    title: "Groups",
+    icon: <FaPeopleCarry size={"2rem"} />,
+    link: "/groups",
+  },
 ];

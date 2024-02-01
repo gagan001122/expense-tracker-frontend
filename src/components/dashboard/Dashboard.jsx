@@ -16,7 +16,7 @@ function Dashboard() {
   const balanceColor = totalBalance() < 0 ? "text-red-500" : "text-green-500";
 
   return (
-    <div className="bg-white p-8 rounded-xl shadow-lg">
+    <div className="bg-white p-8 rounded-xl h-full shadow-lg">
       <div className="p-8 w-full">
         <h1 className="text-3xl font-semibold mb-4">All Transactions</h1>
         <div className="grid grid-cols-5 gap-8 mt-8">

@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { useGlobalContext } from "../../context/globalContext";
 import Button from "../button/Button";
 import { IoAddOutline } from "react-icons/io5";
-
 function GroupForm() {
   const { error, setError, groups, setGroups } = useGlobalContext();
   const [inputState, setInputState] = useState({

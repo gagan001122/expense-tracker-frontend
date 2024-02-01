@@ -12,8 +12,8 @@ function Expenses() {
   }, []);
 
   return (
-    <div className="flex overflow-auto">
-      <div className="w-full bg-white border-2 border-solid border-white shadow-md rounded-2xl p-4 mb-4">
+    <div className="flex overflow-auto h-full">
+      <div className="w-full bg-white border-2 border-solid border-white shadow-md rounded-2xl p-8">
         <h1 className="text-3xl font-semibold mb-4">Expenses</h1>
         <h2 className="total-income text-2xl font-semibol flex justify-center items-center bg-[#FCF6F9] border-2 border-white box-border border-solid shadow-md rounded-2xl p-4 mb-4">
           Total Expense:{" "}
@@ -26,7 +26,9 @@ function Expenses() {
             <ExpenseForm />
           </div>
           <div className="flex-1 text">
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col items-center w-full gap-4 bg-FCF6F9 border-2 border-FFFFFF shadow-md p-4 rounded-2xl overflow-y-auto h-[29.5rem] no-scrollbar">
+              <h2 className="text-2xl font-bold mb-4 p-4">Personal Expenses</h2>
+
               {expenses.map((expense) => {
                 const { _id, title, amount, date, category, type } = expense;
                 return (
