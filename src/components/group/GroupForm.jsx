@@ -52,7 +52,7 @@ function GroupForm() {
           name={"groupName"}
           placeholder="Group Name"
           onChange={handleInput("groupName")}
-          className="border-2 border-white rounded-md p-2"
+          className="border-2 border-slate-400  rounded-md p-2 placeholder:text-slate-800"
         />
       </div>
       <div className="input-control">
@@ -60,7 +60,7 @@ function GroupForm() {
           value={userName}
           name={"userName"}
           onChange={handleInput("userName")}
-          className="border-2 border-white rounded-md p-2"
+          className="border-2 border-slate-400  rounded-md p-2 placeholder:text-slate-800"
         >
           <option value="" disabled>
             Select User

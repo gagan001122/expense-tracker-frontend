@@ -6,6 +6,7 @@ const BASE_URL = "http://localhost:8000/api/v1/";
 export const GlobalProvider = ({ children }) => {
   const [incomes, setIncomes] = useState([]);
   const [expenses, setExpenses] = useState([]);
+  const [groupexpenses, setGroupExpenses] = useState([]);
   const [groups, setGroups] = useState([]);
   const [error, setError] = useState(null);
 
@@ -39,7 +40,6 @@ export const GlobalProvider = ({ children }) => {
     return totalIncome;
   };
 
-  //calculate incomes
   const addExpense = async (income) => {
     const response = await axios
       .post(`${BASE_URL}add-expense`, income)
@@ -58,6 +58,26 @@ export const GlobalProvider = ({ children }) => {
   const deleteExpense = async (id) => {
     const res = await axios.delete(`${BASE_URL}delete-expense/${id}`);
     getExpenses();
+  };
+
+  const addGroupExpense = async (income) => {
+    const response = await axios
+      .post(`${BASE_URL}add-group-expense`, income)
+      .catch((err) => {
+        setError(err.response.data.message);
+      });
+    getGroupExpenses();
+  };
+
+  const getGroupExpenses = async () => {
+    const response = await axios.get(`${BASE_URL}get-group-expenses`);
+    setGroupExpenses(response.data);
+    console.log(response.data);
+  };
+
+  const deleteGroupExpense = async (id) => {
+    const res = await axios.delete(`${BASE_URL}delete-group-expense/${id}`);
+    getGroupExpenses();
   };
 
   const totalExpenses = () => {
@@ -120,7 +140,11 @@ export const GlobalProvider = ({ children }) => {
         groups,
         setGroups,
         addGroup,
+        groupexpenses,
         deleteGroup,
+        addGroupExpense,
+        getGroupExpenses,
+        deleteGroupExpense,
       }}
     >
       {children}

@@ -39,9 +39,9 @@ function Form() {
           type="text"
           value={title}
           name={"title"}
-          placeholder="Salary Title"
+          placeholder="Budget Title"
           onChange={handleInput("title")}
-          className="border-2 border-white bg-transparent p-2 rounded"
+          className="border-2 border-slate-400  rounded-md p-2 placeholder:text-slate-800"
         />
       </div>
       <div className="input-control">
@@ -49,9 +49,9 @@ function Form() {
           value={amount}
           type="text"
           name={"amount"}
-          placeholder={"Salary Amount"}
+          placeholder={"Budget Amount"}
           onChange={handleInput("amount")}
-          className="border-2 border-white bg-transparent p-2 rounded"
+          className="border-2 border-slate-400  rounded-md p-2 placeholder:text-slate-800"
         />
       </div>
       <div className="input-control">
@@ -63,7 +63,7 @@ function Form() {
           onChange={(date) => {
             setInputState({ ...inputState, date: date });
           }}
-          className="border-2 border-white bg-transparent p-2 rounded"
+          className="border-2 border-slate-400  rounded-md p-2 placeholder:text-slate-800"
         />
       </div>
       <div className="selects input-control">
@@ -73,7 +73,7 @@ function Form() {
           name="category"
           id="category"
           onChange={handleInput("category")}
-          className="border-2 border-white bg-transparent p-2 rounded text-[rgba(34, 34, 96, 0.4)] focus:text-[rgba(34, 34, 96, 1)]"
+          className="border-2 border-slate-400  rounded-md p-2 placeholder:text-slate-800"
         >
           <option value="" disabled>
             Select Option

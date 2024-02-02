@@ -2,6 +2,7 @@ import { useState } from "react";
 import "react-datepicker/dist/react-datepicker.css";
 import { useGlobalContext } from "../../context/globalContext";
 import Button from "../button/Button";
+import DatePicker from "react-datepicker";
 import { IoAddOutline } from "react-icons/io5";
 function ExpenseForm() {
   const { addExpense, error, setError } = useGlobalContext();
@@ -12,7 +13,7 @@ function ExpenseForm() {
     category: "",
   });
 
-  const { title, amount, category } = inputState;
+  const { title, amount, category, date } = inputState;
 
   const handleInput = (name) => (e) => {
     setInputState({ ...inputState, [name]: e.target.value });
@@ -53,6 +54,18 @@ function ExpenseForm() {
           className="border-2 border-slate-400  rounded-md p-2 placeholder:text-slate-800"
         />
       </div>
+      <div className="input-control">
+        <DatePicker
+          id="date"
+          placeholderText="Enter A Date"
+          selected={date}
+          dateFormat="dd/MM/yyyy"
+          onChange={(date) => {
+            setInputState({ ...inputState, date: date });
+          }}
+          className="border-2 border-slate-400  rounded-md p-2 placeholder:text-slate-800"
+        />
+      </div>
       <div className="selects input-control">
         <select
           required
@@ -77,7 +90,7 @@ function ExpenseForm() {
       </div>
       <div className="submit-btn">
         <Button
-          name={"Add Expense"}
+          name={"Add Group Expense"}
           icon={
             <IoAddOutline
               className="cursor-pointer"

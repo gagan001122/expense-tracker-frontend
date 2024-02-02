@@ -2,32 +2,32 @@ const people = [
   {
     name: "Leslie Alexander",
     email: "leslie.alexander@example.com",
-    role: "Co-Founder / CEO",
+    role: "Expenese - $1000",
     imageUrl:
       "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    lastSeen: "3h ago",
+    lastSeen: "12/02/2023",
     lastSeenDateTime: "2023-01-23T13:23Z",
   },
   {
     name: "Michael Foster",
     email: "michael.foster@example.com",
-    role: "Co-Founder / CTO",
+    role: "Expenese - $2000",
     imageUrl:
       "https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    lastSeen: "3h ago",
+    lastSeen: "12/02/2023",
     lastSeenDateTime: "2023-01-23T13:23Z",
   },
   {
     name: "Dries Vincent",
     email: "dries.vincent@example.com",
-    role: "Business Relations",
+    role: "Expenese - $3000",
     imageUrl:
       "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    lastSeen: null,
+    lastSeen: "12/02/2023",
   },
 ];
 
-export default function Example() {
+export default function Group() {
   return (
     <ul role="list" className="divide-y divide-gray-100">
       {people.map((person) => (
@@ -42,16 +42,12 @@ export default function Example() {
               <p className="text-sm font-semibold leading-6 text-gray-900">
                 {person.name}
               </p>
-              <p className="mt-1 truncate text-xs leading-5 text-gray-500">
-                {person.email}
-              </p>
             </div>
           </div>
           <div className="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
             <p className="text-sm leading-6 text-gray-900">{person.role}</p>
             {person.lastSeen ? (
               <p className="mt-1 text-xs leading-5 text-gray-500">
-                Last seen{" "}
                 <time dateTime={person.lastSeenDateTime}>
                   {person.lastSeen}
                 </time>
