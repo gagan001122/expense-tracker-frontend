@@ -38,10 +38,12 @@
 
 5. Install dependencies:
    
-   npm install
+    ```bash
+    npm install
 
-6. Run the following command to start the development server:
+7. Run the following command to start the development server:
 
+   ```bash
    npm run dev
 
 
