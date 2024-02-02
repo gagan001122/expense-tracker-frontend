@@ -30,12 +30,13 @@ function Expenses() {
               <h2 className="text-2xl font-bold mb-4 p-4">Personal Expenses</h2>
 
               {expenses.map((expense) => {
-                const { _id, title, amount, date, category, type } = expense;
+                const { _id, description, amount, date, category, type } =
+                  expense;
                 return (
                   <IncomeItem
                     key={_id}
                     id={_id}
-                    title={title}
+                    title={description}
                     amount={amount}
                     date={date}
                     type={type}

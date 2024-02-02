@@ -21,36 +21,32 @@ function Navigation() {
         </div>
       </div>
       <ul className="menu-items flex-1 flex flex-col">
-        <li className="flex items-center my-3 font-semibold cursor-pointer gap-2 transition-all duration-400 ease-in-out">
-          <Link to="/dashboard">
+        <Link to="/dashboard">
+          <li className="flex items-center my-3 font-semibold cursor-pointer gap-2 transition-all duration-400 ease-in-out">
             <MdDashboard size={"2rem"} />
             <span className="ml-2">Dashboard</span>
-          </Link>
-        </li>
-        <li className="flex items-center my-3 font-semibold cursor-pointer gap-2 transition-all duration-400 ease-in-out">
-          <Link to="/incomes">
+          </li>
+        </Link>
+        <Link to="/incomes">
+          <li className="flex items-center my-3 font-semibold cursor-pointer gap-2 transition-all duration-400 ease-in-out">
             <RiMoneyDollarCircleFill size={"2rem"} />
             <span className="ml-2">Budget</span>
-          </Link>
-        </li>
-        <li className="flex items-center my-3 font-semibold cursor-pointer gap-2 transition-all duration-400 ease-in-out">
-          <Link to="/personal">
+          </li>
+        </Link>
+
+        <Link to="/personal">
+          <li className="flex items-center my-3 font-semibold cursor-pointer gap-2 transition-all duration-400 ease-in-out">
             <TbMoneybag size={"2rem"} />
             <span className="ml-2">Personal</span>
-          </Link>
-        </li>
-        <li className="flex items-center my-3 font-semibold cursor-pointer gap-2 transition-all duration-400 ease-in-out">
-          <Link to="/create-group">
-            <FaPeopleCarry size={"2rem"} />
-            <span className="ml-2">Create Group</span>
-          </Link>
-        </li>
-        <li className="flex items-center my-3 font-semibold cursor-pointer gap-2 transition-all duration-400 ease-in-out">
-          <Link to="/groups">
+          </li>
+        </Link>
+
+        <Link to="/create-group">
+          <li className="flex items-center my-3 font-semibold cursor-pointer gap-2 transition-all duration-400 ease-in-out">
             <FaPeopleCarry size={"2rem"} />
             <span className="ml-2">Groups</span>
-          </Link>
-        </li>
+          </li>
+        </Link>
       </ul>
       <div className="bottom-nav">
         <ul className="flex items-center">

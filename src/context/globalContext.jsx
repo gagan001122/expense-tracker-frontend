@@ -21,9 +21,10 @@ export const GlobalProvider = ({ children }) => {
   };
 
   const getIncomes = async () => {
-    const response = await axios.get(`${BASE_URL}get-incomes`);
-    setIncomes(response.data);
-    console.log(response.data);
+    const response = await axios.get(
+      `${import.meta.env.VITE_API}/user/${localStorage.getItem("selfId")}`
+    );
+    setIncomes(response.data.budget || 0);
   };
 
   const deleteIncome = async (id) => {
@@ -32,17 +33,22 @@ export const GlobalProvider = ({ children }) => {
   };
 
   const totalIncome = () => {
-    let totalIncome = 0;
-    incomes.forEach((income) => {
-      totalIncome = totalIncome + income.amount;
-    });
-
-    return totalIncome;
+    return incomes;
   };
 
   const addExpense = async (income) => {
     const response = await axios
-      .post(`${BASE_URL}add-expense`, income)
+      .post(
+        `${
+          import.meta.env.VITE_API
+        }/expense/create?userId=${localStorage.getItem(
+          "selfId"
+        )}?categoryId=52`,
+        {
+          description: "",
+          amount: income,
+        }
+      )
       .catch((err) => {
         setError(err.response.data.message);
       });
@@ -50,9 +56,17 @@ export const GlobalProvider = ({ children }) => {
   };
 
   const getExpenses = async () => {
-    const response = await axios.get(`${BASE_URL}get-expenses`);
-    setExpenses(response.data);
-    console.log(response.data);
+    axios
+      .get(
+        `${import.meta.env.VITE_API}/expense/user/${localStorage.getItem(
+          "selfId"
+        )}`
+      )
+      .then(({ data }) => {
+        console.log("BAKA", data);
+        setExpenses(data);
+      })
+      .catch((err) => console.log("BAKA", err));
   };
 
   const deleteExpense = async (id) => {
@@ -82,8 +96,8 @@ export const GlobalProvider = ({ children }) => {
 
   const totalExpenses = () => {
     let totalIncome = 0;
-    expenses.forEach((income) => {
-      totalIncome = totalIncome + income.amount;
+    expenses.forEach(({ amount }) => {
+      totalIncome += amount;
     });
 
     return totalIncome;
@@ -94,17 +108,16 @@ export const GlobalProvider = ({ children }) => {
   };
 
   const transactionHistory = () => {
-    const history = [...incomes, ...expenses];
+    const history = [...expenses];
     history.sort((a, b) => {
       return new Date(b.createdAt) - new Date(a.createdAt);
     });
 
-    return history.slice(0, 3);
+    return history;
   };
 
   const addGroup = async (newGroup) => {
     try {
-      // Mock adding a new group to the local state
       setGroups([...groups, newGroup]);
     } catch (error) {
       console.error("Error adding group:", error);
@@ -112,7 +125,6 @@ export const GlobalProvider = ({ children }) => {
   };
   const deleteGroup = async (groupId) => {
     try {
-      // Mock deleting a group from the local state
       const updatedGroups = groups.filter((group) => group.id !== groupId);
       setGroups(updatedGroups);
     } catch (error) {

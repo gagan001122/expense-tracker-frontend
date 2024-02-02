@@ -52,7 +52,7 @@
 // }
 // export default App;
 
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import bg from "./img/bg.png";
 import Orb from "./components/orb/Orb";
 import Navigation from "./components/navigation/Navigation";
@@ -63,6 +63,8 @@ import GroupExpenses from "./components/group/GroupExpenses";
 import { useGlobalContext } from "./context/globalContext";
 import AddExpenseToGroup from "./components/group/AddExpenseToGroup";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import SignupPage from "./components/auth/SignupPage";
+import LoginPage from "./components/auth/LoginPage";
 
 function App() {
   const global = useGlobalContext();
@@ -71,27 +73,40 @@ function App() {
   const orbMemo = useMemo(() => {
     return <Orb />;
   }, []);
-
+  const [selfId, setSelfId] = useState(Number(localStorage.getItem("selfId")));
+  useEffect(() => {
+    setSelfId(Number(localStorage.getItem("selfId")));
+  }, [selfId]);
   return (
     <Router>
-      <div className="flex" style={{ backgroundImage: `url(${bg})` }}>
-        {orbMemo}
-        <div className="flex-1 p-8 gap-4 flex h-[100vh] bg-slate-800">
-          <div className="bg-white border-3 border-solid border-white rounded-3xl p-8 shadow-lg">
-            <Navigation />
+      {!selfId ? (
+        <Routes>
+          <Route path="/" element={<SignupPage />} />
+          <Route path="/login" element={<LoginPage />} />
+        </Routes>
+      ) : (
+        <div className="flex" style={{ backgroundImage: `url(${bg})` }}>
+          {orbMemo}
+          <div className="flex-1 p-8 gap-4 flex h-[100vh] bg-slate-800">
+            <div className="bg-white border-3 border-solid border-white rounded-3xl p-8 shadow-lg">
+              <Navigation />
+            </div>
+            <main className="flex-1 overflow-x-hidden scrollbar-none rounded-3xl">
+              <Routes>
+                <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/incomes" element={<Income />} />
+                <Route path="/personal" element={<Expenses />} />
+                <Route path="/create-group" element={<GroupExpenses />} />
+                <Route
+                  path="/open-group/:groupId"
+                  element={<AddExpenseToGroup />}
+                />
+                <Route path="/" element={<Dashboard />} />
+              </Routes>
+            </main>
           </div>
-          <main className="flex-1 overflow-x-hidden scrollbar-none rounded-3xl">
-            <Routes>
-              <Route path="/dashboard" element={<Dashboard />} />
-              <Route path="/incomes" element={<Income />} />
-              <Route path="/personal" element={<Expenses />} />
-              <Route path="/create-group" element={<GroupExpenses />} />
-              <Route path="/groups" element={<AddExpenseToGroup />} />
-              <Route path="/" element={<Dashboard />} />
-            </Routes>
-          </main>
         </div>
-      </div>
+      )}
     </Router>
   );
 }

@@ -25,34 +25,23 @@ ChartJs.register(
 );
 
 function Chart() {
-  const { incomes, expenses } = useGlobalContext();
+  const { expenses } = useGlobalContext();
 
   const data = {
-    labels: incomes.map((inc) => {
+    labels: expenses.map((inc) => {
       const { date } = inc;
       return dateFormat(date);
     }),
     datasets: [
       {
-        label: "Income",
+        label: "Expense",
         data: [
-          ...incomes.map((income) => {
+          ...expenses.map((income) => {
             const { amount } = income;
             return amount;
           }),
         ],
         backgroundColor: "green",
-        tension: 0.2,
-      },
-      {
-        label: "Expenses",
-        data: [
-          ...expenses.map((expense) => {
-            const { amount } = expense;
-            return amount;
-          }),
-        ],
-        backgroundColor: "red",
         tension: 0.2,
       },
     ],

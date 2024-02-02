@@ -1,9 +1,8 @@
 import { useEffect } from "react";
 import { useGlobalContext } from "../../context/globalContext";
 import Form from "../Form/Form";
-import IncomeItem from "./IncomeItem";
 function Income() {
-  const { incomes, getIncomes, deleteIncome, totalIncome } = useGlobalContext();
+  const { getIncomes, totalIncome } = useGlobalContext();
 
   useEffect(() => {
     getIncomes();
@@ -16,29 +15,12 @@ function Income() {
         <h2 className="total-income text-2xl font-semibol flex justify-center items-center bg-[#FCF6F9] border-2 border-white box-border border-solid shadow-md rounded-2xl p-4 mb-4">
           Total Budget:{" "}
           <span className="text-green-700 text-2xl ml-3 font-bold">
-            ${totalIncome()}
+            $ {totalIncome()}
           </span>
         </h2>
         <div className="flex gap-8">
           <div className="w-1/2">
-            <Form />
-          </div>
-          <div className="flex-1">
-            <div className="flex flex-col gap-4">
-              {incomes.map((income) => (
-                <IncomeItem
-                  key={income._id}
-                  id={income._id}
-                  title={income.title}
-                  amount={income.amount}
-                  date={income.date}
-                  type={income.type}
-                  category={income.category}
-                  indicatorColor="var(--color-green)"
-                  deleteItem={deleteIncome}
-                />
-              ))}
-            </div>
+            <Form getIncomes={getIncomes} />
           </div>
         </div>
       </div>
